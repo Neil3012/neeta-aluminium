@@ -15,6 +15,7 @@ const site = {
     { title: 'The open office', type: 'Workspace', img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85' },
   ]
 };
+const logoUrl = `${import.meta.env.BASE_URL}assets/neeta-aluminium-logo.jpeg`;
 
 function App() {
   const [enquiry, setEnquiry] = useState(false);
@@ -22,7 +23,7 @@ function App() {
   const [menu, setMenu] = useState(false);
   return <>
     <header>
-      <a className="brand" href="#top" aria-label="Neeta Aluminium home"><img src="/assets/neeta-aluminium-logo.jpeg" /></a>
+      <a className="brand" href="#top" aria-label="Neeta Aluminium home"><img src={logoUrl} /></a>
       <nav className={menu ? 'open' : ''}>
         <a href="#solutions">Solutions</a><a href="#projects">Projects</a><a href="#process">Our process</a>
         <button className="nav-pay" onClick={() => setPayment(true)}>Make a payment <ArrowUpRight size={15}/></button>
@@ -65,7 +66,7 @@ function App() {
 
       <section className="cta"><p className="eyebrow">Your space, next</p><h2>Have a room<br/>in <em>mind?</em></h2><button className="pill light" onClick={() => setEnquiry(true)}>Tell us about it <MoveRight size={17}/></button></section>
     </main>
-    <footer><img src="/assets/neeta-aluminium-logo.jpeg" alt="Neeta Aluminium"/><div><a href={`tel:${site.phone.replaceAll(' ','')}`}><Phone size={14}/>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a></div><p>© {new Date().getFullYear()} Neeta Aluminium. Crafted with purpose.</p></footer>
+    <footer><img src={logoUrl} alt="Neeta Aluminium"/><div><a href={`tel:${site.phone.replaceAll(' ','')}`}><Phone size={14}/>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a></div><p>© {new Date().getFullYear()} Neeta Aluminium. Crafted with purpose.</p></footer>
     {enquiry && <Enquiry onClose={() => setEnquiry(false)}/>} {payment && <Payment onClose={() => setPayment(false)}/>} 
   </>;
 }
